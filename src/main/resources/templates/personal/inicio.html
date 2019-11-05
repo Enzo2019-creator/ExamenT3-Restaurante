@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1>Lista de Personal</h1>
+
+		<div class="card text-center">
+			<div class="card-header">Lista de Personal</div>
+			<div class="card-body">
+				
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+  					<span th:text="${dangerDel}"></span>
+				</div>
+			
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Nombre</th>
+							<th scope="col">Apellido</th>
+							<th scope="col">Edad</th>
+							<th scope="col">Sexo</th>
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody th:each="personal: ${personales}">
+						<tr>
+							<th scope="row" th:text="${personal.id}">1</th>
+							<td th:text="${personal.nombre}">Mark</td>
+							<td th:text="${personal.apellido}">@mdo</td>
+							<td th:text="${personal.edad}">@mdo</td>
+							<td th:text="${personal.sexo}">@mdo</td>
+							<td>
+								<a th:href="@{ '/personal/info/' + ${personal.id} }" class="btn btn-info"> 
+									<i class="fas fa-info"></i> 
+								</a>
+								<a th:href="@{ '/personal/edit/' + ${personal.id} }" class="btn btn-warning"> 
+									<i class="fas fa-edit"></i> 
+								</a>
+								<a th:href="@{ '/personal/del/' + ${personal.id} }" class="btn btn-danger"> 
+									<i class="fas fa-trash-alt"></i> 
+								</a>							
+							</td>
+						</tr>						
+					</tbody>
+				</table>
+
+			</div>
+			<div class="card-footer text-muted">
+				<a th:href="@{/personal/nuevo}" class="btn btn-primary"><i class="fas fa-file-alt"></i> Nuevo Personal</a>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
+
+
+
+
+
+
+
+

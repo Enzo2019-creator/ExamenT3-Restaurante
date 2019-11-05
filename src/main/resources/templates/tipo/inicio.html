@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1>Lista de Tipos</h1>
+
+		<div class="card text-center">
+			<div class="card-header">Lista de Tipos</div>
+			<div class="card-body">
+				
+				<div th:if="${dangerDel}" class="alert alert-danger" role="alert">
+  					<span th:text="${dangerDel}"></span>
+				</div>
+			
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th scope="col">Id</th>
+							<th scope="col">Nombre</th>
+
+							<th scope="col"></th>
+						</tr>
+					</thead>
+					<tbody th:each="tipo: ${tipos}">
+						<tr>
+							<th scope="row" th:text="${tipo.id}">1</th>
+							<td th:text="${tipo.nombre}">Mark</td>
+
+							<td>
+								<a th:href="@{ '/tipo/info/' + ${tipo.id} }" class="btn btn-info"> 
+									<i class="fas fa-info"></i> 
+								</a>
+								<a th:href="@{ '/tipo/edit/' + ${tipo.id} }" class="btn btn-warning"> 
+									<i class="fas fa-edit"></i> 
+								</a>
+								<a th:href="@{ '/tipo/del/' + ${tipo.id} }" class="btn btn-danger"> 
+									<i class="fas fa-trash-alt"></i> 
+								</a>							
+							</td>
+						</tr>						
+					</tbody>
+				</table>
+
+			</div>
+			<div class="card-footer text-muted">
+				<a th:href="@{/tipo/nuevo}" class="btn btn-primary"><i class="fas fa-file-alt"></i> Nuevo Tipo</a>
+			</div>
+		</div>
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
+
+
+
+
+
+
+
+

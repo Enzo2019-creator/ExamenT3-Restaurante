@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layout/layout :: head"></head>
+<body>
+	<header th:replace="layout/layout :: header"></header>
+
+	<div class="container">
+
+		<h1>Nuevo Personal</h1>
+		<div class="card">
+			<div class="card-header">Registro de nuevo personal</div>
+			<div class="card-body">
+
+				<form th:action="@{/personal/save}" th:object="${personal}"
+					method="post">
+					<div class="form-group">
+						<label for="codigo">Codigo:</label> <input type="text"
+							class="form-control" placeholder="Id" th:field="*{id}">
+					</div>
+					<div class="form-group">
+						<label for="nombre">Nombre :</label> <input type="text"
+							class="form-control" placeholder="Nombre del personal"
+							th:field="*{nombre}">
+					</div>
+					<div class="form-group">
+						<label for="apellido">Apellido :</label> <input type="text"
+							class="form-control" placeholder="Apellido"
+							th:field="*{apellido}">
+					</div>
+					<div class="form-group">
+						<label for="edad">Edad :</label> <input type="text"
+							class="form-control" placeholder="Edad" th:field="*{edad}">
+					</div>
+					<div class="form-group">
+						<label for="sexo">Sexo :</label> <input type="text"
+							class="form-control" placeholder="Sexo" th:field="*{sexo}">
+					</div>
+					<button type="submit" class="btn btn-primary">
+						<i class="fas fa-save"></i> Grabar
+					</button>
+					<a th:href="@{/personal}" class="btn btn-danger"> <i
+						class="fas fa-undo"></i> Cancelar
+					</a>
+				</form>
+
+			</div>
+		</div>
+
+
+	</div>
+
+	<footer th:replace="layout/layout :: footer"></footer>
+</body>
+</html>
